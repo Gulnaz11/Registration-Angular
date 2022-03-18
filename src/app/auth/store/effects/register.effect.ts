@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core'
 import { Actions, createEffect, ofType } from '@ngrx/effects'
+import { HttpErrorResponse } from '@angular/common/http'
+
 import {
   registerAction,
   registerFailedAction,
@@ -21,8 +23,10 @@ export class RegisterEffect {
             // @ts-ignore
             return registerSuccessAction(currantUser)
           }),
-          catchError(() => {
-            return of(registerFailedAction())
+          catchError((errorResponse: HttpErrorResponse) => {
+            return of(
+              registerFailedAction({ errors: errorResponse.error.errors })
+            )
           })
         )
       })
