@@ -1,0 +1,33 @@
+<div>
+  <div class="banner">
+    <h2 class="logo-font">Hello,{{profileName}}!</h2>
+    <p> Welcome to profile Page</p>
+  </div>
+  <form>
+   <h1 class="text-xs-center"> My profile:</h1>
+    <fieldset>
+      <fieldset class="form-group">
+        <label>Name:</label>
+        <input
+          class="form-control form-control-lg"
+          placeholder="Username"
+          value="{{profileName}}"
+          readonly
+        >
+
+      </fieldset>
+      <fieldset class="form-group">
+        <label>Email:</label>
+        <input
+          class="form-control form-control-lg"
+          placeholder="Email"
+          value="{{profileEmail}}"
+          readonly
+        >
+      </fieldset>
+    </fieldset>
+  </form>
+  <a [routerLink]="['/register']">
+    Go back to Registration
+  </a>
+</div>

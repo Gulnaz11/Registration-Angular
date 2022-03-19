@@ -10,6 +10,7 @@ import { AppComponent } from './app.component'
 import { AuthModule } from './auth/auth.module'
 import { HttpClientModule } from '@angular/common/http'
 import { EffectsModule } from '@ngrx/effects'
+import { ProfileModule } from './profile/profile.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { EffectsModule } from '@ngrx/effects'
     AppRoutingModule,
     FormsModule,
     AuthModule,
+    ProfileModule,
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

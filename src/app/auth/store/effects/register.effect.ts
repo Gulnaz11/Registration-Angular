@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core'
+import { Injectable, Output } from '@angular/core'
 import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { HttpErrorResponse } from '@angular/common/http'
 
@@ -22,7 +22,11 @@ export class RegisterEffect {
         return this.authService.register(request).pipe(
           map((currantUser: CurrantUserInterface) => {
             // window.localStorage.setItem('accesToken', currantUser.token)
-            this.persistanceService.set('accesToken', currantUser.token)
+            this.persistanceService.set(
+              'accesToken',
+              [currantUser.username, currantUser.email].join(' ')
+            )
+            console.log(currantUser)
             // @ts-ignore
             return registerSuccessAction(currantUser)
           }),
@@ -41,7 +45,7 @@ export class RegisterEffect {
       this.actions$.pipe(
         ofType(registerSuccessAction),
         tap(() => {
-          this.roter.navigateByUrl('/')
+          this.roter.navigateByUrl('/profile')
         })
       ),
     { dispatch: false }
