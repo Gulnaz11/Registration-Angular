@@ -1,3 +1,3 @@
 export interface BackendInterface {
-  [key: string]: string
+  [key: string]: string[]
 }

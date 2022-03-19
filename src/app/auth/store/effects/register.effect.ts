@@ -14,7 +14,6 @@ import { AuthService } from '../../services/auth.service'
 @Injectable()
 export class RegisterEffect {
   register$ = createEffect(() =>
-    // @ts-ignore
     this.actions$.pipe(
       ofType(registerAction),
       switchMap(({ request }) => {
